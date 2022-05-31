@@ -6,6 +6,18 @@
 const createConfig = (api) => {
   api.cache.forever()
   return {
+    plugins: [
+      [
+        "module-resolver",
+        {
+          // for absolute path import
+          alias: {
+            assets: "./assets",
+            src: "./src",
+          },
+        },
+      ],
+    ],
     presets: ["babel-preset-expo"],
   }
 }
