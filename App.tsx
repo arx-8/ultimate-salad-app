@@ -1,24 +1,30 @@
-import { StatusBar } from "expo-status-bar"
-import { StyleSheet, Text, View } from "react-native"
-import { HomePage } from "src/components/pages/HomePage"
+import { NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { DetailsPage } from "src/components/pages/DetailsPage"
+import { IndexPage } from "src/components/pages/IndexPage"
+import { RootStackParamList } from "src/types/@react-navigation"
+import { objectEntries } from "src/utils/object"
 
-export default function App(): JSX.Element {
+const screens: {
+  // "index" is excluded because it is the screen that should be transitioned 1st.
+  [name in Exclude<keyof RootStackParamList, "index">]: () => JSX.Element
+} = {
+  details: DetailsPage,
+}
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
+
+const App = (): JSX.Element => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <HomePage />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="index" component={IndexPage} />
+        {objectEntries(screens).map(([name, component]) => {
+          return <Stack.Screen key={name} name={name} component={component} />
+        })}
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
-const bgColor = "#fff"
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: bgColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-})
+export default App
