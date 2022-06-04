@@ -23,7 +23,7 @@
     "start": "expo start",
     "test-ci": "jest --ci",
     "test": "jest --watch",
-    "update-all": "npx --yes npm-check-updates@13.0.3 -u --reject \"/^(@types/react-native|@types/react|react|react-dom|react-native)$/\"",
+    "update-all": "npx --yes npm-check-updates@13.0.3 -u --reject \"/^(@types/jest|@types/react-native|@types/react|jest|react|react-dom|react-native)$/\"",
     "web": "expo start --web"
   },
   "dependencies": {
