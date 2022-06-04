@@ -1,29 +1,27 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons"
 import { StatusBar } from "expo-status-bar"
 import { Box, Fab, Heading, HStack, Icon, IconButton } from "native-base"
+import { useState } from "react"
 import { FlatList, StyleSheet, View } from "react-native"
 import { Stars } from "src/components/molecules/Stars"
-import { Salad, SaladID } from "src/models/salad"
-
-const salads: Salad[] = [
-  {
-    id: "0" as SaladID,
-    name: "1st salad",
-    rate: 5,
-  },
-  {
-    id: "1" as SaladID,
-    name: "The 2",
-    rate: 1,
-  },
-  {
-    id: "2" as SaladID,
-    name: "salad salad salad",
-    rate: 3,
-  },
-]
+import { generateSaladID, Salad } from "src/models/salad"
+import { generateGodName } from "src/utils/misc"
 
 export const IndexPage = (): JSX.Element => {
+  const [salads, setSalads] = useState<Salad[]>([])
+
+  const onPressAdd = (): void => {
+    const next: Salad[] = [
+      ...salads,
+      {
+        id: generateSaladID(),
+        name: `${generateGodName()}・サラダ`,
+        rate: ((Math.floor(Math.random() * 4) % 4) + 1) as Salad["rate"],
+      },
+    ]
+    setSalads(next)
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -46,7 +44,13 @@ export const IndexPage = (): JSX.Element => {
         }}
       />
 
-      <Fab shadow={2} icon={<Icon as={AntDesign} name="plus" />} />
+      <Fab
+        shadow={8}
+        icon={<Icon as={AntDesign} name="plus" size="xl" />}
+        onPress={onPressAdd}
+        bottom={8}
+        right={8}
+      />
     </View>
   )
 }
