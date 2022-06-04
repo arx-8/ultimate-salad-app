@@ -7,6 +7,13 @@
   "files.insertFinalNewline": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsdk": "node_modules/typescript/lib",
+  "[typescript]": {
+    // To prevent misdetection of indent size
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2
+  },
   /**
    * Extensions
    */
