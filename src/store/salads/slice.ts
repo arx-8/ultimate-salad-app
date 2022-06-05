@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { generateSaladRecipeID, SaladRecipe } from "src/models/salad"
+import { loadRecipes } from "src/store/salads/asyncActions"
 import { generateGodName } from "src/utils/misc"
 
 export type State = Readonly<{
@@ -11,6 +12,11 @@ export const initialState: State = {
 }
 
 export const slice = createSlice({
+  extraReducers: (builder) => {
+    builder.addCase(loadRecipes.fulfilled, (state, action) => {
+      state.recipes = action.payload
+    })
+  },
   initialState,
   name: "salads",
   reducers: {
