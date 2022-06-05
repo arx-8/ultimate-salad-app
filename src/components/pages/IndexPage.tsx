@@ -1,38 +1,36 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons"
 import { StatusBar } from "expo-status-bar"
 import { Box, Fab, Heading, HStack, Icon, IconButton } from "native-base"
-import { useState } from "react"
 import { FlatList, StyleSheet, View } from "react-native"
 import { Stars } from "src/components/molecules/Stars"
-import { generateSaladID, Salad } from "src/models/salad"
-import { generateGodName } from "src/utils/misc"
+import { SaladRecipeID } from "src/models/salad"
+import { useDispatch, useSelector } from "src/store"
+import { saladsActions, saladsSelectors } from "src/store/salads"
 
 export const IndexPage = (): JSX.Element => {
-  const [salads, setSalads] = useState<Salad[]>([])
+  const dispatch = useDispatch()
+  const recipes = useSelector(saladsSelectors.getRecipes)
 
   const onPressAdd = (): void => {
-    const next: Salad[] = [
-      ...salads,
-      {
-        id: generateSaladID(),
-        name: `${generateGodName()}・サラダ`,
-        rate: ((Math.floor(Math.random() * 4) % 4) + 1) as Salad["rate"],
-      },
-    ]
-    setSalads(next)
+    dispatch(saladsActions.addSalad())
+  }
+
+  const onPressDelete = (id: SaladRecipeID): void => {
+    dispatch(saladsActions.deleteSalad({ id }))
   }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <FlatList
-        data={salads}
+        data={recipes}
         keyExtractor={({ id }) => id}
         renderItem={({ item }) => {
           return (
             <Box borderWidth="1">
               <HStack alignItems="center" space={8}>
                 <IconButton
+                  onPress={() => onPressDelete(item.id)}
                   colorScheme="red"
                   icon={<Icon as={MaterialIcons} name="delete" />}
                 />

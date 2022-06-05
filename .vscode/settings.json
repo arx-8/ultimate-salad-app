@@ -26,5 +26,5 @@
   "editor.formatOnSave": true,
   "prettier.prettierPath": "./node_modules/prettier",
   /** streetsidesoftware.code-spell-checker */
-  "cSpell.words": ["prettierrc", "ulid", "ulidx"]
+  "cSpell.words": ["prettierrc", "reduxjs", "ulid", "ulidx"]
 }

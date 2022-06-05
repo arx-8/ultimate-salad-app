@@ -1,16 +1,16 @@
 import { ulid } from "ulidx"
 import { Brand } from "utility-types"
 
-export type SaladID = Brand<string, "SaladID">
+export type SaladRecipeID = Brand<string, "SaladRecipeID">
 
 type SaladRate = 1 | 2 | 3 | 4 | 5
 
-export type Salad = {
-  id: SaladID
+export type SaladRecipe = {
+  id: SaladRecipeID
   name: string
   rate: SaladRate
 }
 
-export const generateSaladID = (): SaladID => {
-  return ulid() as SaladID
+export const generateSaladRecipeID = (): SaladRecipeID => {
+  return ulid() as SaladRecipeID
 }
