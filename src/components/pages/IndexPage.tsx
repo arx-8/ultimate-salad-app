@@ -1,17 +1,22 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons"
+import { useNavigation } from "@react-navigation/native"
 import { StatusBar } from "expo-status-bar"
 import { Box, Fab, Heading, HStack, Icon, IconButton } from "native-base"
-import { FlatList, StyleSheet, View } from "react-native"
+import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native"
 import { LoadingOverlay } from "src/components/atoms/LoadingOverlay"
 import { useSalads } from "src/components/helpers/useSalads"
-import { Stars } from "src/components/molecules/Stars"
-import { getSaladRate, SaladID } from "src/models/salad"
+import { SaladID } from "src/models/salad"
 
 export const IndexPage = (): JSX.Element => {
-  const { addSalad, deleteSalad, isLoading, salads } = useSalads()
+  const navigation = useNavigation()
+  const { deleteSalad, isLoading, salads } = useSalads()
 
   const onPressAdd = (): void => {
-    addSalad()
+    navigation.navigate("create")
+  }
+
+  const onPressEdit = (id: SaladID): void => {
+    navigation.navigate("edit", { id })
   }
 
   const onPressDelete = (id: SaladID): void => {
@@ -37,8 +42,9 @@ export const IndexPage = (): JSX.Element => {
                   onPress={() => onPressDelete(item.id)}
                   icon={<Icon as={MaterialIcons} name="delete" />}
                 />
-                <Heading>{item.name}</Heading>
-                <Stars count={getSaladRate(item)} />
+                <TouchableOpacity onPress={() => onPressEdit(item.id)}>
+                  <Heading>{item.name}</Heading>
+                </TouchableOpacity>
               </HStack>
             </Box>
           )
@@ -46,6 +52,7 @@ export const IndexPage = (): JSX.Element => {
       />
 
       <Fab
+        renderInPortal={false}
         shadow={8}
         icon={<Icon as={AntDesign} name="plus" size="xl" />}
         onPress={onPressAdd}

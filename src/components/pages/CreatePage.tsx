@@ -2,12 +2,12 @@ import { useNavigation } from "@react-navigation/native"
 import { StatusBar } from "expo-status-bar"
 import { Button, StyleSheet, Text, View } from "react-native"
 
-export const DetailsPage = (): JSX.Element => {
+export const CreatePage = (): JSX.Element => {
   const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
-      <Text>DetailsPage</Text>
+      <Text>CreatePage</Text>
       <Button
         title="Go to Index"
         onPress={() => {

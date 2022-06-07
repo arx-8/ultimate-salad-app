@@ -1,5 +1,8 @@
+import { SaladID } from "src/models/salad"
+
 export type RootStackParamList = {
-  details: undefined
+  create: undefined
+  edit: { id: SaladID }
   index: undefined
 }
 
