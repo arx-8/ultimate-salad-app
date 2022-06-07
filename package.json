@@ -41,6 +41,7 @@
     "react-native-screens": "3.11.1",
     "react-native-svg": "12.3.0",
     "react-native-web": "0.17.7",
+    "react-query": "3.39.1",
     "ulidx": "0.3.0",
     "utility-types": "3.10.0",
     "victory-native": "36.4.1"

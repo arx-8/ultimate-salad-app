@@ -1,30 +1,29 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons"
 import { StatusBar } from "expo-status-bar"
 import { Box, Fab, Heading, HStack, Icon, IconButton } from "native-base"
-import { useState } from "react"
 import { FlatList, StyleSheet, View } from "react-native"
+import { LoadingOverlay } from "src/components/atoms/LoadingOverlay"
+import { useSalads } from "src/components/helpers/useSalads"
 import { Stars } from "src/components/molecules/Stars"
-import { generateSaladID, Salad } from "src/models/salad"
-import { generateGodName } from "src/utils/misc"
+import { getSaladRate, SaladID } from "src/models/salad"
 
 export const IndexPage = (): JSX.Element => {
-  const [salads, setSalads] = useState<Salad[]>([])
+  const { addSalad, deleteSalad, isLoading, salads } = useSalads()
 
   const onPressAdd = (): void => {
-    const next: Salad[] = [
-      ...salads,
-      {
-        id: generateSaladID(),
-        name: `${generateGodName()}・サラダ`,
-        rate: ((Math.floor(Math.random() * 4) % 4) + 1) as Salad["rate"],
-      },
-    ]
-    setSalads(next)
+    addSalad()
+  }
+
+  const onPressDelete = (id: SaladID): void => {
+    // TODO confirm before delete
+    deleteSalad(id)
   }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      <LoadingOverlay visible={isLoading} />
+
       <FlatList
         data={salads}
         keyExtractor={({ id }) => id}
@@ -33,11 +32,13 @@ export const IndexPage = (): JSX.Element => {
             <Box borderWidth="1">
               <HStack alignItems="center" space={8}>
                 <IconButton
+                  disabled={isLoading}
                   colorScheme="red"
+                  onPress={() => onPressDelete(item.id)}
                   icon={<Icon as={MaterialIcons} name="delete" />}
                 />
                 <Heading>{item.name}</Heading>
-                <Stars count={item.rate} />
+                <Stars count={getSaladRate(item)} />
               </HStack>
             </Box>
           )
@@ -49,6 +50,7 @@ export const IndexPage = (): JSX.Element => {
         icon={<Icon as={AntDesign} name="plus" size="xl" />}
         onPress={onPressAdd}
         bottom={8}
+        disabled={isLoading}
         right={8}
       />
     </View>

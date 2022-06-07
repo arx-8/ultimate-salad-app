@@ -8,9 +8,13 @@ type SaladRate = 1 | 2 | 3 | 4 | 5
 export type Salad = {
   id: SaladID
   name: string
-  rate: SaladRate
 }
 
 export const generateSaladID = (): SaladID => {
   return ulid() as SaladID
+}
+
+export const getSaladRate = (salad: Salad): SaladRate => {
+  console.warn("TODO impl calc logic")
+  return ((Math.floor(salad.name.length * 4) % 5) + 1) as SaladRate
 }
