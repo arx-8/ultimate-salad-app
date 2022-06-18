@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders correctly case 1 1`] = `
 <View
   style={
     Object {
@@ -21,15 +21,37 @@ exports[`renders correctly 1`] = `
   >
     Welcome to React Native!
   </Text>
+  <Text>
+    This is a React Native snapshot test. 
+    hello react-native
+  </Text>
+</View>
+`;
+
+exports[`renders correctly case 2 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
   <Text
     style={
       Object {
-        "marginBottom": 5,
+        "fontSize": 20,
+        "margin": 10,
         "textAlign": "center",
       }
     }
   >
-    This is a React Native snapshot test.
+    Welcome to React Native!
+  </Text>
+  <Text>
+    This is a React Native snapshot test. 
+    hello snapshot
   </Text>
 </View>
 `;

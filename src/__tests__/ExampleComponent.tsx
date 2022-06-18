@@ -1,28 +1,27 @@
 import React from "react"
+// eslint-disable-next-line no-restricted-imports
 import { StyleSheet, Text, View } from "react-native"
 
-export const ExampleComponent = (): JSX.Element => {
+type Props = {
+  content: string
+}
+
+export const ExampleComponent = ({ content }: Props): JSX.Element => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>
-        This is a React Native snapshot test.
-      </Text>
+    <View style={styles.root}>
+      <Text style={styles.title}>Welcome to React Native!</Text>
+      <Text>This is a React Native snapshot test. {content}</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     alignItems: "center",
     flex: 1,
     justifyContent: "center",
   },
-  instructions: {
-    marginBottom: 5,
-    textAlign: "center",
-  },
-  welcome: {
+  title: {
     fontSize: 20,
     margin: 10,
     textAlign: "center",
