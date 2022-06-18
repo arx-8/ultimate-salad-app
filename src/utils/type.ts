@@ -6,10 +6,10 @@
  * @param x target
  * @param extraMessage Messages to help identify the cause of the problem if it should occur.
  */
-export function assertNonNull<T>(
+export const assertNonNull: <T>(
   x: T,
   extraMessage: string
-): asserts x is NonNullable<T> {
+) => asserts x is NonNullable<T> = (x, extraMessage) => {
   if (x == null) {
     throw new Error(
       `Unexpected null / undefined. Should exist value. (${extraMessage})`

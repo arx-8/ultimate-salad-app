@@ -23,7 +23,7 @@
     "start": "expo start",
     "test-ci": "jest --ci",
     "test": "jest --watch",
-    "update-all": "npx --yes npm-check-updates@13.0.3 -u --reject \"/^(@types/jest|@types/react-native|@types/react|jest|react|react-dom|react-native|react-native-safe-area-context|react-native-screens)$/\"",
+    "update-all": "npx --yes npm-check-updates@13.0.3 -u --reject \"/^(@types/jest|@types/react-native|@types/react|eslint-plugin-jest|jest|react|react-dom|react-native|react-native-safe-area-context|react-native-screens)$/\"",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -62,6 +62,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "26.5.3",
     "eslint-plugin-n": "15.2.3",
     "eslint-plugin-promise": "6.0.0",
     "eslint-plugin-react": "7.30.0",

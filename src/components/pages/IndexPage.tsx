@@ -37,10 +37,10 @@ export const IndexPage = (): JSX.Element => {
             <Box borderWidth="1">
               <HStack alignItems="center" space={8}>
                 <IconButton
-                  disabled={isLoading}
                   colorScheme="red"
-                  onPress={() => onPressDelete(item.id)}
+                  disabled={isLoading}
                   icon={<Icon as={MaterialIcons} name="delete" />}
+                  onPress={() => onPressDelete(item.id)}
                 />
                 <TouchableOpacity onPress={() => onPressEdit(item.id)}>
                   <Heading>{item.name}</Heading>
@@ -52,13 +52,13 @@ export const IndexPage = (): JSX.Element => {
       />
 
       <Fab
-        renderInPortal={false}
-        shadow={8}
-        icon={<Icon as={AntDesign} name="plus" size="xl" />}
-        onPress={onPressAdd}
         bottom={8}
         disabled={isLoading}
+        icon={<Icon as={AntDesign} name="plus" size="xl" />}
+        onPress={onPressAdd}
+        renderInPortal={false}
         right={8}
+        shadow={8}
       />
     </View>
   )

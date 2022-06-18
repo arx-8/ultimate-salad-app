@@ -26,6 +26,7 @@ describe("when in doubt, use `toStrictEqual`. It is the most reliable.", () => {
   it("`toStrictEqual` is the strictest.", () => {
     expect.hasAssertions()
 
+    // eslint-disable-next-line no-restricted-syntax
     class Protein {
       flavor: string
 
@@ -40,6 +41,7 @@ describe("when in doubt, use `toStrictEqual`. It is the most reliable.", () => {
     /* eslint-enable */
   })
 
+  // eslint-disable-next-line no-restricted-syntax
   class Human {
     constructor(private readonly name: string, private readonly age: number) {}
 

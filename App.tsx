@@ -26,10 +26,10 @@ const App = (): JSX.Element => {
       <NativeBaseProvider>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="index" component={IndexPage} />
+            <Stack.Screen component={IndexPage} name="index" />
             {objectEntries(screens).map(([name, component]) => {
               return (
-                <Stack.Screen key={name} name={name} component={component} />
+                <Stack.Screen component={component} key={name} name={name} />
               )
             })}
           </Stack.Navigator>

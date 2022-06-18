@@ -70,6 +70,12 @@ const config = {
         },
       },
     ],
+    "@typescript-eslint/consistent-generic-constructors": 2,
+    "@typescript-eslint/consistent-indexed-object-style": [
+      2,
+      "index-signature",
+    ],
+    "@typescript-eslint/consistent-type-assertions": 2,
     "@typescript-eslint/consistent-type-definitions": [2, "type"],
     "@typescript-eslint/naming-convention": [
       2,
@@ -102,9 +108,33 @@ const config = {
     "import/no-default-export": 2,
     "no-restricted-syntax": [
       2,
+      // available selector: https://babeljs.io/docs/en/babel-types
       {
         message:
-          "Do not use `enum`. Use `Plain Object` or `Literal Types` instead.",
+          "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
+        selector: "ForInStatement",
+      },
+      {
+        message:
+          "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+        selector: "LabeledStatement",
+      },
+      {
+        message:
+          "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+        selector: "WithStatement",
+      },
+      {
+        message: "Do not use `class`. Use `Plain object` instead.",
+        selector: "ClassDeclaration",
+      },
+      {
+        message: "Do not declare function. Use arrow function instead.",
+        selector: "FunctionDeclaration",
+      },
+      {
+        message:
+          "Do not use `enum`. Use `Plain object` or `Literal Types` instead.",
         selector: "TSEnumDeclaration",
       },
     ],
@@ -115,6 +145,10 @@ const config = {
     "react-native/no-raw-text": 0,
     // Error occurred. Bug?: `Error: Fixable rules must set the `meta.fixable` property to "code" or "whitespace".`
     "react-native/sort-styles": 0,
+    "react/jsx-boolean-value": 2,
+    "react/jsx-sort-props": 2,
+    "react/jsx-uses-react": 0,
+    "react/no-array-index-key": 2,
     "react/react-in-jsx-scope": 0,
     "sort-destructure-keys/sort-destructure-keys": 2,
     "sort-keys-fix/sort-keys-fix": 2,

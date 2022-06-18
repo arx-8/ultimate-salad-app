@@ -9,10 +9,10 @@ export const CreatePage = (): JSX.Element => {
     <View style={styles.container}>
       <Text>CreatePage</Text>
       <Button
-        title="Go to Index"
         onPress={() => {
           navigation.navigate("index")
         }}
+        title="Go to Index"
       />
 
       <StatusBar style="auto" />

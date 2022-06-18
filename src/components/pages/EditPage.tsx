@@ -11,10 +11,10 @@ export const EditPage = (): JSX.Element => {
     <View style={styles.container}>
       <Text>EditPage : {route.params.id}</Text>
       <Button
-        title="Go to Index"
         onPress={() => {
           navigation.navigate("index")
         }}
+        title="Go to Index"
       />
 
       <StatusBar style="auto" />

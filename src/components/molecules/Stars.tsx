@@ -11,7 +11,8 @@ export const Stars = ({ count }: Props): JSX.Element => {
   return (
     <View style={styles.root}>
       {range(0, count - 1).map((_, i) => {
-        return <Icon key={i} as={FontAwesome} name="star" color="yellow.500" />
+        // eslint-disable-next-line react/no-array-index-key
+        return <Icon as={FontAwesome} color="yellow.500" key={i} name="star" />
       })}
     </View>
   )
