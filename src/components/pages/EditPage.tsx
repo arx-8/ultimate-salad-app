@@ -1,6 +1,6 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import { StatusBar } from "expo-status-bar"
-import { Button, StyleSheet, Text, View } from "react-native"
+import { Box, Button, Text } from "native-base"
 import { RootStackParamList } from "src/types/@react-navigation"
 
 export const EditPage = (): JSX.Element => {
@@ -8,7 +8,12 @@ export const EditPage = (): JSX.Element => {
   const route = useRoute<RouteProp<RootStackParamList, "edit">>()
 
   return (
-    <View style={styles.container}>
+    <Box
+      alignItems="center"
+      backgroundColor="#FAA"
+      flex={1}
+      justifyContent="center"
+    >
       <Text>EditPage : {route.params.id}</Text>
       <Button
         onPress={() => {
@@ -18,17 +23,6 @@ export const EditPage = (): JSX.Element => {
       />
 
       <StatusBar style="auto" />
-    </View>
+    </Box>
   )
 }
-
-const bgColor = "#FAA"
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: bgColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-})

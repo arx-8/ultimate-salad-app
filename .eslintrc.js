@@ -106,6 +106,27 @@ const config = {
     camelcase: 0,
     "dot-notation": 0,
     "import/no-default-export": 2,
+    "no-restricted-imports": [
+      2,
+      {
+        paths: [
+          {
+            importNames: [
+              "Button",
+              "FlatList",
+              "KeyboardAvoidingView",
+              "ScrollView",
+              "SectionList",
+              "StyleSheet",
+              "Text",
+              "View",
+            ],
+            message: `Use "native-base" instead.`,
+            name: "react-native",
+          },
+        ],
+      },
+    ],
     "no-restricted-syntax": [
       2,
       // available selector: https://babeljs.io/docs/en/babel-types

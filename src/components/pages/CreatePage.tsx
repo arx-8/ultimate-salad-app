@@ -1,12 +1,17 @@
 import { useNavigation } from "@react-navigation/native"
 import { StatusBar } from "expo-status-bar"
-import { Button, StyleSheet, Text, View } from "react-native"
+import { Box, Button, Text } from "native-base"
 
 export const CreatePage = (): JSX.Element => {
   const navigation = useNavigation()
 
   return (
-    <View style={styles.container}>
+    <Box
+      alignItems="center"
+      backgroundColor="#AAF"
+      flex={1}
+      justifyContent="center"
+    >
       <Text>CreatePage</Text>
       <Button
         onPress={() => {
@@ -16,17 +21,6 @@ export const CreatePage = (): JSX.Element => {
       />
 
       <StatusBar style="auto" />
-    </View>
+    </Box>
   )
 }
-
-const bgColor = "#AAF"
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: bgColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-})

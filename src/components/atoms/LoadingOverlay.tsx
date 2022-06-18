@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { ActivityIndicator, StyleSheet } from "react-native"
 
 type Props = {

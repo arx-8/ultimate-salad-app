@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native"
+import { Box, Text } from "native-base"
 import { V } from "src/types/victory"
 
 const sampleData = [
@@ -49,7 +49,7 @@ const sampleData2 = [
 
 export const HomePage = (): JSX.Element => {
   return (
-    <View style={styles.root}>
+    <Box alignItems="center" flex={1} justifyContent="center">
       <Text>Hello HomePage</Text>
       <V.VictoryChart polar theme={V.VictoryTheme.material}>
         {/* inner guide line */}
@@ -84,14 +84,6 @@ export const HomePage = (): JSX.Element => {
           }}
         />
       </V.VictoryChart>
-    </View>
+    </Box>
   )
 }
-
-const styles = StyleSheet.create({
-  root: {
-    alignItems: "center",
-    flex: 1,
-    justifyContent: "center",
-  },
-})

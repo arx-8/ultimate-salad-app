@@ -1,8 +1,16 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import { StatusBar } from "expo-status-bar"
-import { Box, Fab, Heading, HStack, Icon, IconButton } from "native-base"
-import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native"
+import {
+  Box,
+  Fab,
+  FlatList,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+} from "native-base"
+import { TouchableOpacity } from "react-native"
 import { LoadingOverlay } from "src/components/atoms/LoadingOverlay"
 import { useSalads } from "src/components/helpers/useSalads"
 import { SaladID } from "src/models/salad"
@@ -25,7 +33,7 @@ export const IndexPage = (): JSX.Element => {
   }
 
   return (
-    <View style={styles.container}>
+    <Box alignItems="center" flex={1} justifyContent="center">
       <StatusBar style="auto" />
       <LoadingOverlay visible={isLoading} />
 
@@ -60,14 +68,6 @@ export const IndexPage = (): JSX.Element => {
         right={8}
         shadow={8}
       />
-    </View>
+    </Box>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    flex: 1,
-    justifyContent: "center",
-  },
-})
