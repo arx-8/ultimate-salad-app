@@ -71,10 +71,6 @@ const config = {
       },
     ],
     "@typescript-eslint/consistent-generic-constructors": 2,
-    "@typescript-eslint/consistent-indexed-object-style": [
-      2,
-      "index-signature",
-    ],
     "@typescript-eslint/consistent-type-assertions": 2,
     "@typescript-eslint/consistent-type-definitions": [2, "type"],
     "@typescript-eslint/naming-convention": [

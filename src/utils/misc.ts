@@ -1,4 +1,4 @@
-import { assertNonNull } from "src/utils/type"
+import { assertNonNullish } from "src/utils/nullish"
 
 const gods = [
   "アグニ",
@@ -163,6 +163,6 @@ const gods = [
 export const generateGodName = (): string => {
   const randIndex = Math.floor(Math.random() * gods.length) % gods.length
   const god = gods[randIndex]
-  assertNonNull(god, `logic failure. randIndex: ${randIndex}`)
+  assertNonNullish(god, `logic failure. randIndex: ${randIndex}`)
   return god
 }
