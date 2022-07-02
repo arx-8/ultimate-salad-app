@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar"
 import { Box, Text } from "native-base"
+import { EditableFoodTable } from "src/components/organisms/EditableFoodTable"
 import { NutrientChart } from "src/components/organisms/NutrientChart"
+import { SelectableFoodTable } from "src/components/organisms/SelectableFoodTable"
 import { Food, getEatableAmount, getSummedDetails } from "src/models/food"
 import { generateGodName } from "src/utils/misc"
 import { sum } from "src/utils/number"
@@ -61,8 +63,23 @@ export const CreatePage = (): JSX.Element => {
           />
         </Box>
       </Box>
-      <Box flex={3} />
-      <Box flex={4} />
+      <Box flex={3}>
+        <EditableFoodTable
+          foods={dummy.foods}
+          onChangeAmount={(id, value) => {
+            console.log({ id, value })
+          }}
+          values={{}}
+        />
+      </Box>
+      <Box flex={4}>
+        <SelectableFoodTable
+          foods={dummy.foods}
+          onAdd={(id) => {
+            console.log({ id })
+          }}
+        />
+      </Box>
 
       <StatusBar style="auto" />
     </Box>
