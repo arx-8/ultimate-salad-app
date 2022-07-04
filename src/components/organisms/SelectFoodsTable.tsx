@@ -1,22 +1,17 @@
+import { Button } from "native-base"
 import { DataTable } from "react-native-paper"
-import { NumberInput } from "src/components/atoms/NumberInput"
 import { displaySortKeys, Food, FoodID } from "src/models/food"
 
 type Props = {
   foods: Food[]
-  onChangeAmount: (id: FoodID, amount: number | undefined) => void
-  values: Record<FoodID, number>
+  onAdd: (id: FoodID) => void
 }
 
-export const EditableFoodTable = ({
-  foods,
-  onChangeAmount,
-  values,
-}: Props): JSX.Element => {
+export const SelectFoodsTable = ({ foods, onAdd }: Props): JSX.Element => {
   return (
     <DataTable>
       <DataTable.Header>
-        <DataTable.Title>Amount</DataTable.Title>
+        <DataTable.Title> </DataTable.Title>
         <DataTable.Title>ID</DataTable.Title>
         <DataTable.Title>Name</DataTable.Title>
         {displaySortKeys.map((k) => {
@@ -28,16 +23,12 @@ export const EditableFoodTable = ({
         return (
           <DataTable.Row key={f.id}>
             <DataTable.Cell>
-              <NumberInput
-                onChange={(value) => {
-                  onChangeAmount(f.id, value)
-                }}
-                value={values[f.id] ?? 0}
-              />
+              <Button onPress={() => onAdd(f.id)}>Add</Button>
             </DataTable.Cell>
+            <DataTable.Cell>{f.id}</DataTable.Cell>
             <DataTable.Cell>{f.name}</DataTable.Cell>
             {displaySortKeys.map((k) => {
-              return <DataTable.Title key={k}>{f.details[k]}</DataTable.Title>
+              return <DataTable.Cell key={k}>{f.details[k]}</DataTable.Cell>
             })}
           </DataTable.Row>
         )

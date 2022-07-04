@@ -113,7 +113,6 @@ const config = {
               "KeyboardAvoidingView",
               "ScrollView",
               "SectionList",
-              "StyleSheet",
               "Text",
               "View",
             ],

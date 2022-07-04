@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { NativeBaseProvider } from "native-base"
 import "react-native-get-random-values"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { CreatePage } from "src/components/pages/CreatePage"
 import { EditPage } from "src/components/pages/EditPage"
 import { IndexPage } from "src/components/pages/IndexPage"
+import { GlobalStyles } from "src/components/styles/GlobalStyles"
 import { RootStackParamList } from "src/types/@react-navigation"
 import { objectEntries } from "src/utils/object"
 
@@ -23,7 +23,7 @@ const queryClient = new QueryClient()
 const App = (): JSX.Element => {
   return (
     <QueryClientProvider client={queryClient}>
-      <NativeBaseProvider>
+      <GlobalStyles>
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen component={IndexPage} name="index" />
@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
             })}
           </Stack.Navigator>
         </NavigationContainer>
-      </NativeBaseProvider>
+      </GlobalStyles>
     </QueryClientProvider>
   )
 }

@@ -1,48 +1,73 @@
 import { StatusBar } from "expo-status-bar"
 import { Box, Text } from "native-base"
-import { EditableFoodTable } from "src/components/organisms/EditableFoodTable"
+import { EditFoodsTable } from "src/components/organisms/EditFoodsTable"
 import { NutrientChart } from "src/components/organisms/NutrientChart"
-import { SelectableFoodTable } from "src/components/organisms/SelectableFoodTable"
-import { Food, getEatableAmount, getSummedDetails } from "src/models/food"
+import { SelectFoodsTable } from "src/components/organisms/SelectFoodsTable"
+import {
+  Food,
+  FoodID,
+  getEatableAmount,
+  getSummedDetails,
+} from "src/models/food"
 import { generateGodName } from "src/utils/misc"
 import { sum } from "src/utils/number"
 
+const foods: Food[] = [
+  {
+    amount: 100,
+    details: {
+      enerc_kcal: 26,
+      protcaa: 1.6,
+      refuse_rate: 3,
+      water: 90.2,
+      z0: Math.floor(Math.random() * 100),
+      z1: Math.floor(Math.random() * 100),
+      z2: Math.floor(Math.random() * 100),
+      z3: Math.floor(Math.random() * 100),
+      z4: Math.floor(Math.random() * 100),
+      z5: Math.floor(Math.random() * 100),
+    },
+    id: "06080" as FoodID,
+    name: "ケール　葉　生",
+  },
+  {
+    amount: 50,
+    details: {
+      enerc_kcal: 30,
+      protcaa: 0.8,
+      refuse_rate: 2,
+      water: 91,
+      z0: Math.floor(Math.random() * 100),
+      z1: Math.floor(Math.random() * 100),
+      z2: Math.floor(Math.random() * 100),
+      z3: Math.floor(Math.random() * 100),
+      z4: Math.floor(Math.random() * 100),
+      z5: Math.floor(Math.random() * 100),
+    },
+    id: "06183" as FoodID,
+    name: "ミニトマト",
+  },
+  {
+    amount: 200,
+    details: {
+      enerc_kcal: 21,
+      protcaa: 1.2,
+      refuse_rate: 20,
+      water: 91.5,
+      z0: Math.floor(Math.random() * 100),
+      z1: Math.floor(Math.random() * 100),
+      z2: Math.floor(Math.random() * 100),
+      z3: Math.floor(Math.random() * 100),
+      z4: Math.floor(Math.random() * 100),
+      z5: Math.floor(Math.random() * 100),
+    },
+    id: "06238" as FoodID,
+    name: "バジル　葉　生",
+  },
+]
+
 const dummy = {
-  foods: [
-    {
-      amount: 100,
-      details: {
-        enerc_kcal: 26,
-        protcaa: 1.6,
-        refuse_rate: 3,
-        water: 90.2,
-      },
-      id: "06080",
-      name: "ケール　葉　生",
-    },
-    {
-      amount: 50,
-      details: {
-        enerc_kcal: 30,
-        protcaa: 0.8,
-        refuse_rate: 2,
-        water: 91,
-      },
-      id: "06183",
-      name: "ミニトマト",
-    },
-    {
-      amount: 200,
-      details: {
-        enerc_kcal: 21,
-        protcaa: 1.2,
-        refuse_rate: 20,
-        water: 91.5,
-      },
-      id: "06238",
-      name: "バジル　葉　生",
-    },
-  ] as Food[],
+  foods,
   saladName: `${generateGodName()}・サラダ`,
 }
 
@@ -64,7 +89,7 @@ export const CreatePage = (): JSX.Element => {
         </Box>
       </Box>
       <Box flex={3}>
-        <EditableFoodTable
+        <EditFoodsTable
           foods={dummy.foods}
           onChangeAmount={(id, value) => {
             console.log({ id, value })
@@ -73,7 +98,7 @@ export const CreatePage = (): JSX.Element => {
         />
       </Box>
       <Box flex={4}>
-        <SelectableFoodTable
+        <SelectFoodsTable
           foods={dummy.foods}
           onAdd={(id) => {
             console.log({ id })
